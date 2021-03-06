@@ -1,0 +1,10 @@
+.vscode
+.*.swp
+
+# macOS specific
+.DS_Store
+
+# MS office hidden files
+~$*.docx
+~$*.xlsx
+~$*.pptx

@@ -1,0 +1,14 @@
+[user]
+	name = Jingyu Pan
+	email = jingyu.pan@duke.edu
+[alias]
+	st = status
+	co = checkout
+	lg = log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %C(bold blue)<%an>%Creset' --abbrev-commit
+[core]
+	editor = vim
+	quotepath = false # 不对0x80以上的字符进行quote，解决git status/commit时中文文件名乱码
+[pull]
+	ff = only
+[init]
+	defaultBranch = main
