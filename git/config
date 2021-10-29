@@ -2,10 +2,10 @@
 	useConfigOnly = true
 
 [pager]
-    diff = delta
-    log = delta
-    reflog = delta
-    show = delta
+	diff = delta
+	log = delta
+	reflog = delta
+	show = delta
 
 [interactive]
 	diffFilter = delta --color-only --features=interactive
@@ -21,7 +21,6 @@
 [core]
 	editor = vim
 	excludesFile = ~/.config/git/ignore
-        excludesFile = ~/.config/git/ignore.local
 	quotepath = false # 不对0x80以上的字符进行quote，解决git status/commit时中文文件名乱码
 
 [pull]
