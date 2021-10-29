@@ -12,6 +12,7 @@
     # Directories
     ~/.config/git: git
     # Files
+    ~/.pylintrc: python/pylintrc    # default user configuration for pylint
     ~/.spacemacs:
         path: emacs/spacemacs
         force: true
