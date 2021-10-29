@@ -1,5 +1,7 @@
-.vscode
-.*.swp
+# Editor temps
+.vscode/
+*.swp
+*~
 
 # macOS specific
 .DS_Store
@@ -8,3 +10,4 @@
 ~$*.docx
 ~$*.xlsx
 ~$*.pptx
+

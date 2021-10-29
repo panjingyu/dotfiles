@@ -1,0 +1,17 @@
+- defaults:
+    link:
+        create: true
+        relink: true
+
+- clean:
+    ~/:
+    ~/.config:
+        recursive: true
+
+- link:
+    ~/.vimrc:
+    ~/.config/git:
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]
+
