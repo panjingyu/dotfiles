@@ -16,7 +16,9 @@
         path: emacs/spacemacs
         force: true
     ~/.tmux.conf: tmux/tmux.conf
-    ~/.vimrc: vimrc
+    ~/.vimrc:
+        path: vim/vimrc
+        force: true
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
