@@ -9,8 +9,9 @@
         recursive: true
 
 - link:
-    ~/.vimrc:
-    ~/.config/git:
+    ~/.config/git: git
+    ~/.tmux.conf: tmux/tmux.conf
+    ~/.vimrc: vimrc
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
