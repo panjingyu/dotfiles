@@ -9,7 +9,12 @@
         recursive: true
 
 - link:
+    # Directories
     ~/.config/git: git
+    # Files
+    ~/.spacemacs:
+        path: emacs/spacemacs
+        force: true
     ~/.tmux.conf: tmux/tmux.conf
     ~/.vimrc: vimrc
 
