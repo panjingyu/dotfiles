@@ -16,7 +16,7 @@
 [alias]
 	st = status
 	co = checkout
-	lg = log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %C(bold blue)<%an>%Creset' --abbrev-commit
+	lg = log --all --graph --pretty=format:'%Cblue%G? %Cred%h %Creset-%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --date=format:'%F %k:%M %z' --abbrev-commit
 
 [core]
 	editor = vim
