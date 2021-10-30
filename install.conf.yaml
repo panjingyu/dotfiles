@@ -8,6 +8,10 @@
     ~/.config:
         recursive: true
 
+- create:
+    ~/.ssh:
+      mode: 0700
+
 - link:
     # Directories
     ~/.config/git: git
@@ -15,6 +19,9 @@
     ~/.pylintrc: python/pylintrc    # default user configuration for pylint
     ~/.spacemacs:
         path: emacs/spacemacs
+        force: true
+    ~/.ssh/config:
+        path: ssh/config
         force: true
     ~/.tmux.conf: tmux/tmux.conf
     ~/.vimrc:
