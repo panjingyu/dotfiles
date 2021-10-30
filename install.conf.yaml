@@ -19,6 +19,7 @@
     ~/.pylintrc: python/pylintrc    # default user configuration for pylint
     ~/.spacemacs: emacs/spacemacs
     ~/.ssh/:
+        if: '[ `uname` = Darwin ]'
         path: ssh/*
         glob: true
     ~/.tmux.conf: tmux/tmux.conf
