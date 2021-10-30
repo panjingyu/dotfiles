@@ -12,11 +12,12 @@
 
 [commit]
 	gpgsign = true
+	verbose = true
 
 [alias]
 	st = status
 	co = checkout
-	lg = log --all --graph --pretty=format:'%Cblue%G? %Cred%h %Creset-%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --date=format:'%F %k:%M %z' --abbrev-commit
+	lg = log --all --graph --format=log-line --date=format:'%F %k:%M %z' --abbrev-commit
 
 [core]
 	editor = vim
@@ -25,6 +26,12 @@
 
 [pull]
 	ff = only
+
+[merge]
+	autostash = true
+
+[pretty]
+	log-line = %Cblue%G? %Cred%h %Creset-%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset
 
 [init]
 	defaultBranch = main
