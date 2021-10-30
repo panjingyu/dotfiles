@@ -2,7 +2,6 @@
     link:
         create: true
         relink: true
-        exclude: [ '**/*.local' ]
 
 - clean:
     ~/:
@@ -19,7 +18,9 @@
         glob: true
     ~/.pylintrc: python/pylintrc    # default user configuration for pylint
     ~/.spacemacs: emacs/spacemacs
-    ~/.ssh/config: ssh/config
+    ~/.ssh/:
+        path: ssh/*
+        glob: true
     ~/.tmux.conf: tmux/tmux.conf
     ~/.vimrc: vim/vimrc
 
