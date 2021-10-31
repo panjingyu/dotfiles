@@ -108,3 +108,9 @@ set scrolloff=7
 set backspace=eol,start,indent
 
 set foldmethod=syntax
+
+" Turn backup off, since most stuff is in SVN, git et.c anyway...
+set nobackup
+set nowb
+set noswapfile
+
