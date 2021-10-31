@@ -7,6 +7,7 @@ call plug#begin('~/.vim/plugged')
 " Declare the list of plugins.
 Plug 'ntpeters/vim-better-whitespace'   " Handle trailing white space
 Plug 'easymotion/vim-easymotion'
+Plug 'junegunn/vim-peekaboo'            " View regs in a natural way
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -29,10 +30,34 @@ nmap <leader>w :w<cr>
 
 " Map fd to <Esc>
 inoremap fd <Esc>
+
+" emacs-style movement for limited position adjustment
 inoremap <C-f> <Right>
 inoremap <C-b> <Left>
 inoremap <C-p> <Up>
 inoremap <C-n> <Down>
+inoremap <C-h> <Backspace>
+inoremap <C-d> <Delete>
+
+" Adjusting indentation should not break visual mode
+xnoremap < <gv
+xnoremap > >gv
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Easymotion configuration
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Line motion
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+map <Leader>l <Plug>(easymotion-lineforward)
+map <Leader>h <Plug>(easymotion-linebackward)
+map <Leader>f <Plug>(easymotion-f)
+
+" Keep cursor column during 'jk' line motion
+let g:EasyMotion_startofline = 0
+
+" Jump to {char} by `<Leader>s{char}{label}`
+map <Leader>s <Plug>(easymotion-overwin-f)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
@@ -78,3 +103,8 @@ set autoread
 " Controls the minimal number of visible leading and trailing lines
 " surrounding the cursor.
 set scrolloff=7
+
+" Backspace should also perform on 'eol', 'start', 'indent'
+set backspace=eol,start,indent
+
+set foldmethod=syntax
