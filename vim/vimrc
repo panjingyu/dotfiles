@@ -14,7 +14,7 @@ call plug#end()
 " Automatically install missing plugins on startup
 autocmd VimEnter *
     \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-    \|   PlugInstall --sync | q
+    \|     PlugInstall --sync | q
     \| endif
 
 
@@ -74,3 +74,7 @@ set relativenumber
 
 " Set to auto read when a file is changed from the outside
 set autoread
+
+" Controls the minimal number of visible leading and trailing lines
+" surrounding the cursor.
+set scrolloff=7
