@@ -1,8 +1,24 @@
-" Set number
-set number relativenumber
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Vim-plug configuration
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugins will be downloaded under the specified directory.
+call plug#begin('~/.vim/plugged')
+
+" Declare the list of plugins.
+Plug 'ntpeters/vim-better-whitespace'   " Handle trailing white space
+
+" List ends here. Plugins become visible to Vim after this call.
+call plug#end()
+
+" Automatically install missing plugins on startup
+autocmd VimEnter *
+    \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+    \|   PlugInstall --sync | q
+    \| endif
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
-" Key Mapping
+" => Key Mapping
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set the leader key to <Space>
 let mapleader = " "
@@ -31,3 +47,25 @@ set softtabstop=4
 "set shiftwidth=4
 
 set autoindent  " does nothing more than copy the indentation from the previous line, when starting a new line.
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Search
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" When 'ignorecase' and 'smartcase' are both on, if a pattern contains an
+" uppercase letter, it is case sensitive, otherwise, it is not.
+set ignorecase
+set smartcase
+" Incrementally search while typing
+set incsearch
+" Highlight searches
+set hlsearch
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Misc
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Set number
+set number
+set relativenumber
+
+" Set to auto read when a file is changed from the outside
+set autoread

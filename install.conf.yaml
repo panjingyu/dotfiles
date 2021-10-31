@@ -26,5 +26,6 @@
     ~/.vimrc: vim/vimrc
 
 - shell:
-  - [git submodule update --init --recursive, Installing submodules]
-
+    - [git submodule update --init --recursive, Installing submodules]
+    - [source vim/install-vim-plug.sh,
+       Install vim-plug (https://github.com/junegunn/vim-plug)]
