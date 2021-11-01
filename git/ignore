@@ -11,3 +11,6 @@
 ~$*.xlsx
 ~$*.pptx
 
+# Common temporaries
+*.log
+
