@@ -107,7 +107,10 @@ set scrolloff=7
 " Backspace should also perform on 'eol', 'start', 'indent'
 set backspace=eol,start,indent
 
+" Configure folding by syntax
 set foldmethod=syntax
+" no folds when a buffer is opened
+set foldlevelstart=99
 
 " Turn backup off, since most stuff is in SVN, git et.c anyway...
 set nobackup
