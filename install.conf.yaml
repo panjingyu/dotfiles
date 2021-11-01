@@ -35,4 +35,6 @@
       stdout: true
       stderr: true
       description: Install Homebrew for macOS/Linux
+    - [source tmux/install-tpm.sh,
+       Install Tmux Plugin Manager(https://github.com/tmux-plugins/tpm)]
 
