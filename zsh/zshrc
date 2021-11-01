@@ -1,28 +1,19 @@
-# oh-my-zsh configuration
-
-ZSH="${HOME}/.oh-my-zsh" # Path to your oh-my-zsh installation.
-ZSH_THEME="jpan"
-HIST_STAMPS="yyyy-mm-dd"
-plugins=(git extract)
-source $ZSH/oh-my-zsh.sh
-
+# THIS ZSHRC FILE IS NOT READY!
 
 ## User Configurations
 
-export LC_ALL=en_US.UTF-8  
+export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-    export EDITOR='vim'
-else
-    export EDITOR='mvim'
-fi
 
 
 ### Environment variables
 
-export PATH=/usr/local/sbin:$PATH
+# Include non-root Homebrew for linux path
+if [ -d $HOME/.linuxbrew ]
+then
+    export PATH=$HOME/.linuxbrew/bin:$PATH
+fi
+
 
 # GPG
 export GPG_TTY=$(tty)

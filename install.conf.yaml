@@ -29,3 +29,10 @@
     - [git submodule update --init --recursive, Installing submodules]
     - [source vim/install-vim-plug.sh,
        Install vim-plug (https://github.com/junegunn/vim-plug)]
+    -
+      command: source homebrew/install.sh
+      stdin: true
+      stdout: true
+      stderr: true
+      description: Install Homebrew for macOS/Linux
+
