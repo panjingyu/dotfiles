@@ -20,7 +20,11 @@
 [delta "decorations"]
 	commit-decoration-style = blue ol
 	commit-style = raw
+        zero-style  = 'syntax dim'
+        minus-style = 'syntax bold auto'
+        plus-style  = 'syntax bold auto'
 	file-style = omit
+        line-numbers-zero-style = "#888888"
 	hunk-header-decoration-style = yellow box
 	hunk-header-file-style = yellow
 	hunk-header-style = file syntax
