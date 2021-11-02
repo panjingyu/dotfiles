@@ -1,1 +1,5 @@
-auto_activate_base: false
+channels:
+  - conda-forge
+  - defaults
+auto_activate_base: true
+env_prompt: ({name})

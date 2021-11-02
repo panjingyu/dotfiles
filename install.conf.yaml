@@ -13,6 +13,7 @@
       mode: 0700
 
 - link:
+    ~/.condarc: conda/condarc
     ~/.config/git/:
         path: git/*
         glob: true
