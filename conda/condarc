@@ -1,5 +1,6 @@
 channels:
   - conda-forge
   - defaults
-auto_activate_base: true
+show_channel_urls: True
+auto_activate_base: True
 env_prompt: ({name})
