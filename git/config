@@ -10,6 +10,21 @@
 [interactive]
 	diffFilter = delta --color-only --features=interactive
 
+[delta]
+	features = decorations
+	line-numbers = true
+
+[delta "interactive"]
+	keep-plus-minus-markers = true
+
+[delta "decorations"]
+	commit-decoration-style = blue ol
+	commit-style = raw
+	file-style = omit
+	hunk-header-decoration-style = yellow box
+	hunk-header-file-style = yellow
+	hunk-header-style = file syntax
+
 [commit]
 	gpgsign = true
 	verbose = true
