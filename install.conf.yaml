@@ -26,6 +26,9 @@
         glob: true
     ~/.tmux.conf: tmux/tmux.conf
     ~/.vimrc: vim/vimrc
+    ~/.zshrc:
+        if: '[ `uname` = Linux ]'
+        path: zsh/zshrc
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
