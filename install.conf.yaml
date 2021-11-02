@@ -32,14 +32,13 @@
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
-    - [source vim/install-vim-plug.sh,
+    - [bash vim/install-vim-plug.sh,
        Install vim-plug (https://github.com/junegunn/vim-plug)]
     -
-      command: source homebrew/install.sh
+      command: bash homebrew/install.sh
       stdin: true
       stdout: true
       stderr: true
       description: Install Homebrew for macOS/Linux
-    - [source tmux/install-tpm.sh,
+    - [bash tmux/install-tpm.sh,
        Install Tmux Plugin Manager(https://github.com/tmux-plugins/tpm)]
-
