@@ -8,6 +8,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'ntpeters/vim-better-whitespace'   " Handle trailing white space
 Plug 'easymotion/vim-easymotion'
 Plug 'junegunn/vim-peekaboo'            " View regs in a natural way
+Plug 'preservim/nerdtree'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
