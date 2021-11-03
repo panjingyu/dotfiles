@@ -1,6 +1,18 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vim-plug configuration
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Functions for pluggin installation & update
+function! BuildYCM(info)
+    " info is a dictionary with 3 fields
+    " - name:   name of the plugin
+    " - status: 'installed', 'updated', or 'unchanged'
+    " - force:  set on PlugInstall! or PlugUpdate!
+    if a:info.status == 'installed' || a:info.force
+        !./install.py
+    endif
+endfunction
+
 " Plugins will be downloaded under the specified directory.
 call plug#begin('~/.vim/plugged')
 
@@ -9,6 +21,9 @@ Plug 'ntpeters/vim-better-whitespace'   " Handle trailing white space
 Plug 'easymotion/vim-easymotion'
 Plug 'junegunn/vim-peekaboo'            " View regs in a natural way
 Plug 'preservim/nerdtree'
+Plug 'joshdick/onedark.vim'
+Plug 'sheerun/vim-polyglot'
+Plug 'ycm-core/YouCompleteMe', { 'do': function('BuildYCM') }
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -79,6 +94,8 @@ set softtabstop=4
 
 set autoindent  " does nothing more than copy the indentation from the previous line, when starting a new line.
 
+nmap <Leader>p :setlocal paste!<cr>
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Search
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -117,4 +134,9 @@ set foldlevelstart=99
 set nobackup
 set nowb
 set noswapfile
+
+syntax on
+colorscheme onedark
+
+
 

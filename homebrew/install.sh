@@ -7,7 +7,12 @@ then
     while read -p 'Do you want to install Homebrew? [y/n]: ' ans
     do
         case $ans in
-            [Yy]* ) eval $install_homebrew; break;;
+            [Yy]* ) eval $install_homebrew;
+                    if [ $(uname) = Linux ]
+                    then
+                        export PATH=$HOME/.linuxbrew/bin:$PATH
+                    fi
+                    break;;
             [Nn]* ) break;;
             * ) echo 'Please answer yes or no.';;
         esac
