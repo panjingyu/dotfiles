@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# set -e
+set -e
 
 for i in cmake python3
 do
