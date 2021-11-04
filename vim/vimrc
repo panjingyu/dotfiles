@@ -24,6 +24,8 @@ Plug 'preservim/nerdtree'
 Plug 'joshdick/onedark.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'ycm-core/YouCompleteMe', { 'do': function('BuildYCM') }
+Plug 'psliwka/vim-smoothie'
+Plug 'tpope/vim-commentary'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
