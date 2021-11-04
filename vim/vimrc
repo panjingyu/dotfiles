@@ -26,6 +26,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'ycm-core/YouCompleteMe', { 'do': function('BuildYCM') }
 Plug 'psliwka/vim-smoothie'
 Plug 'tpope/vim-commentary'
+Plug 'vim-syntastic/syntastic'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -157,5 +158,19 @@ endif
 
 colorscheme onedark
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Sypntastic: syntax checker configuration
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" Recommended in README
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" Python
+let g:syntastic_python_checkers = ['pylint']
