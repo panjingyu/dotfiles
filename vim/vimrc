@@ -27,6 +27,10 @@ Plug 'ycm-core/YouCompleteMe', { 'do': function('BuildYCM') }
 Plug 'psliwka/vim-smoothie'
 Plug 'tpope/vim-commentary'
 Plug 'vim-syntastic/syntastic'
+Plug 'vim-airline/vim-airline'
+Plug 'haya14busa/incsearch.vim'
+Plug 'haya14busa/incsearch-easymotion.vim'
+Plug 'haya14busa/incsearch-fuzzy.vim'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -50,33 +54,57 @@ nmap <leader>w :w<cr>
 " Map fd to <Esc>
 inoremap fd <Esc>
 
-" emacs-style movement for limited position adjustment
-inoremap <C-f> <Right>
-inoremap <C-b> <Left>
-inoremap <C-p> <Up>
-inoremap <C-n> <Down>
-inoremap <C-h> <Backspace>
-inoremap <C-d> <Delete>
+" emacs-style cursor movement in insert/command-line mode
+noremap! <C-f> <Right>
+noremap! <C-b> <Left>
+noremap! <C-a> <Home>
+noremap! <C-e> <End>
+noremap! <C-h> <Backspace>
+noremap! <C-d> <Delete>
+
+" Command line history
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
 
 " Adjusting indentation should not break visual mode
 xnoremap < <gv
 xnoremap > >gv
 
+map <tab> gt
+map <S-tab> gT
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Easymotion configuration
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Line motion
+" Common line motions
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 map <Leader>l <Plug>(easymotion-lineforward)
 map <Leader>h <Plug>(easymotion-linebackward)
 map <Leader>f <Plug>(easymotion-f)
+map <Leader>F <Plug>(easymotion-F)
+map <Leader>t <Plug>(easymotion-t)
+map <Leader>T <Plug>(easymotion-T)
+
+" Pinpoint character(s) over windows
+map s <Plug>(easymotion-s)
 
 " Keep cursor column during 'jk' line motion
 let g:EasyMotion_startofline = 0
 
-" Jump to {char} by `<Leader>s{char}{label}`
-map <Leader>s <Plug>(easymotion-overwin-f)
+" incsearch.vim x fuzzy x vim-easymotion
+
+function! s:config_easyfuzzymotion(...) abort
+  return extend(copy({
+  \   'converters': [incsearch#config#fuzzy#converter()],
+  \   'modules': [incsearch#config#easymotion#module()],
+  \   'keymap': {"\<CR>": '<Over>(easymotion)'},
+  \   'is_expr': 0,
+  \   'is_stay': 1
+  \ }), get(a:, 1, {}))
+endfunction
+
+noremap <silent><expr> z/ incsearch#go(<SID>config_easyfuzzymotion())
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
@@ -111,6 +139,14 @@ set incsearch
 " Highlight searches
 set hlsearch
 
+" Disable highlight when <leader><cr> is pressed
+map <silent> <Esc><Esc> :<C-u>nohlsearch<cr>
+
+" incsearch.vim configuration
+map /  <Plug>(incsearch-easymotion-/)
+map ?  <Plug>(incsearch-easymotin-?)
+map g/ <Plug>(incsearch-easymotion-stay)
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Misc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -143,18 +179,21 @@ set noswapfile
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax on
 
+" Enable tabline
+let g:airline#extensions#tabline#enabled = 1
+
 " onedark.vim override: Don't set a background color when running in a terminal;
 " just use the terminal's background color
 " `gui` is the hex color code used in GUI mode/nvim true-color mode
 " `cterm` is the color code used in 256-color mode
 " `cterm16` is the color code used in 16-color mode
 if (has("autocmd") && !has("gui_running"))
-  augroup colorset
-    autocmd!
-    let s:white = { "gui": "#ABB2BF", "cterm": "145", "cterm16" : "7" }
-    " `bg` will not be styled since there is no `bg` setting
-    autocmd ColorScheme * call onedark#set_highlight("Normal", { "fg": s:white })
-  augroup END
+    augroup colorset
+        autocmd!
+        let s:white = { "gui": "#ABB2BF", "cterm": "145", "cterm16" : "7" }
+        " `bg` will not be styled since there is no `bg` setting
+        autocmd ColorScheme * call onedark#set_highlight("Normal", { "fg": s:white })
+    augroup END
 endif
 
 colorscheme onedark
