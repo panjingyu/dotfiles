@@ -70,8 +70,15 @@ cnoremap <C-n> <Down>
 xnoremap < <gv
 xnoremap > >gv
 
+" Quick switch among tabs
 map <tab> gt
 map <S-tab> gT
+
+" Quick switch among windows
+noremap <C-j> <C-w><C-j>
+noremap <C-k> <C-w><C-k>
+noremap <C-h> <C-w><C-h>
+noremap <C-l> <C-w><C-l>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Easymotion configuration
