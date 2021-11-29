@@ -17,6 +17,9 @@
     ~/.config/git/:
         path: git/*
         glob: true
+    ~/.config/mpv/:
+        path: mpv/*
+        glob: true
     ~/.gitconfig: git/config        # for backward compatibility
     ~/.pylintrc: python/pylintrc    # default user configuration for pylint
     ~/.spacemacs: emacs/spacemacs
