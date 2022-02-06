@@ -2,17 +2,6 @@
 " => Vim-plug configuration
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Functions for pluggin installation & update
-function! BuildYCM(info)
-    " info is a dictionary with 3 fields
-    " - name:   name of the plugin
-    " - status: 'installed', 'updated', or 'unchanged'
-    " - force:  set on PlugInstall! or PlugUpdate!
-    if a:info.status == 'installed' || a:info.force
-        !/usr/bin/python3 install.py
-    endif
-endfunction
-
 " Plugins will be downloaded under the specified directory.
 call plug#begin('~/.vim/plugged')
 
@@ -23,7 +12,6 @@ Plug 'junegunn/vim-peekaboo'            " View regs in a natural way
 Plug 'preservim/nerdtree'
 Plug 'joshdick/onedark.vim'
 Plug 'sheerun/vim-polyglot'
-Plug 'ycm-core/YouCompleteMe', { 'do': function('BuildYCM') }
 Plug 'psliwka/vim-smoothie'
 Plug 'tpope/vim-commentary'
 Plug 'vim-syntastic/syntastic'
@@ -42,60 +30,6 @@ autocmd VimEnter *
     \| endif
 
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Key Mapping
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Set the leader key to <Space>
-let mapleader = " "
-
-" Fast saving
-nmap <leader>w :w<cr>
-
-" Map fd to <Esc>
-inoremap fd <Esc>
-
-" emacs-style cursor movement in insert/command-line mode
-noremap! <C-f> <Right>
-noremap! <C-b> <Left>
-noremap! <C-a> <Home>
-noremap! <C-e> <End>
-noremap! <C-h> <Backspace>
-noremap! <C-d> <Delete>
-
-" Command line history
-cnoremap <C-p> <Up>
-cnoremap <C-n> <Down>
-
-" Adjusting indentation should not break visual mode
-xnoremap < <gv
-xnoremap > >gv
-
-" Quick switch among tabs
-map <tab> gt
-map <S-tab> gT
-
-" Quick switch among windows
-noremap <C-j> <C-w><C-j>
-noremap <C-k> <C-w><C-k>
-noremap <C-h> <C-w><C-h>
-noremap <C-l> <C-w><C-l>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Easymotion configuration
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Common line motions
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
-map <Leader>l <Plug>(easymotion-lineforward)
-map <Leader>h <Plug>(easymotion-linebackward)
-map <Leader>f <Plug>(easymotion-f)
-map <Leader>F <Plug>(easymotion-F)
-map <Leader>t <Plug>(easymotion-t)
-map <Leader>T <Plug>(easymotion-T)
-
-" Pinpoint character(s) over windows
-map s <Plug>(easymotion-s)
-
 " Keep cursor column during 'jk' line motion
 let g:EasyMotion_startofline = 0
 
@@ -109,6 +43,11 @@ function! s:config_easyfuzzymotion(...) abort
   \   'is_expr': 0,
   \   'is_stay': 1
   \ }), get(a:, 1, {}))
+endfunction
+
+" @param {string} path 'relative to s:rc_base_dir(~/.vim/rc/)'
+function! s:source_rc(path) abort
+  execute 'source' fnameescape(s:rc_base_dir . a:path)
 endfunction
 
 noremap <silent><expr> z/ incsearch#go(<SID>config_easyfuzzymotion())
@@ -147,7 +86,7 @@ set incsearch
 set hlsearch
 
 " Disable highlight when <leader><cr> is pressed
-map <silent> <Esc><Esc> :<C-u>nohlsearch<cr>
+map <silent> <Esc><Esc> :nohlsearch<cr>
 
 " incsearch.vim configuration
 map /  <Plug>(incsearch-easymotion-/)
@@ -221,3 +160,10 @@ let g:syntastic_check_on_wq = 0
 
 " Python
 let g:syntastic_python_checkers = ['pylint']
+
+" Load rc files
+let g:vimrc = expand('<sfile>')
+let g:vimrc_root = fnamemodify(g:vimrc, ':h')
+let s:rc_base_dir = g:vimrc_root . '/.vim/rc/'
+
+call s:source_rc('mapping.vim')
