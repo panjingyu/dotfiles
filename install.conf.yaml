@@ -21,6 +21,7 @@
         path: mpv/*
         glob: true
     ~/.gitconfig: git/config        # for backward compatibility
+    ~/.p10k.zsh: zsh/p10k.zsh       # powerlevel10k
     ~/.pylintrc: python/pylintrc    # default user configuration for pylint
     ~/.spacemacs: emacs/spacemacs
     ~/.ssh/:
@@ -33,7 +34,6 @@
         path: vim/rc/*
         glob: true
     ~/.zshrc:
-        if: '[ `uname` = Linux ]'
         path: zsh/zshrc
 
 - shell:
@@ -52,3 +52,5 @@
       description: Install dependencies to build YCM (https://github.com/ycm-core/YouCompleteMe)]
     - [bash tmux/install-tpm.sh,
        Install Tmux Plugin Manager(https://github.com/tmux-plugins/tpm)]
+    - [bash zsh/install-plugins.sh,
+       Install Zsh plugins (OMZ, p10k, etc.)]
