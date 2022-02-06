@@ -45,3 +45,12 @@ fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# EXA - ls replacement
+if [ -x "$(command -v exa)" ]; then
+    alias ls='exa'
+    alias la='exa --all'
+    alias lt='exa --long --tree --level=2'
+    alias ll='exa --long --all --header --extended --git --links --icons'
+    alias l='exa --long --all --header'
+fi
