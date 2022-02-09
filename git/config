@@ -20,11 +20,11 @@
 [delta "decorations"]
 	commit-decoration-style = blue ol
 	commit-style = raw
-        zero-style  = 'syntax dim'
-        minus-style = 'syntax bold auto'
-        plus-style  = 'syntax bold auto'
+	zero-style  = 'syntax dim'
+	minus-style = 'syntax bold auto'
+	plus-style  = 'syntax bold auto'
 	file-style = omit
-        line-numbers-zero-style = "#888888"
+	line-numbers-zero-style = "#888888"
 	hunk-header-decoration-style = yellow box
 	hunk-header-file-style = yellow
 	hunk-header-style = file syntax
@@ -36,9 +36,9 @@
 [alias]
 	st = status
 	co = checkout
-        cfg-global = !git config --file ~/.config/git/config.local  # without !git, file path are strictly handled as relative path
+	cfg-global = !git config --file ~/.config/git/config.local  # without !git, file path are strictly handled as relative path
 	lg = log --all --graph --format=log-line --date=format:'%F %k:%M %z' --abbrev-commit
-        unstage = reset HEAD --
+	unstage = reset HEAD --
 
 [core]
 	editor = vim
