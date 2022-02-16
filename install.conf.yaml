@@ -52,5 +52,8 @@
       description: Install dependencies to build YCM (https://github.com/ycm-core/YouCompleteMe)]
     - [bash tmux/install-tpm.sh,
        Install Tmux Plugin Manager(https://github.com/tmux-plugins/tpm)]
-    - [bash zsh/install-plugins.sh,
-       Install Zsh plugins (OMZ, p10k, etc.)]
+    -
+      command: bash zsh/zplug.sh
+      stdout: true
+      stderr: true
+      description: Install Zplug.
