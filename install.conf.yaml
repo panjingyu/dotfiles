@@ -46,10 +46,6 @@
       description: Install Homebrew for macOS/Linux
     - [bash vim/install-vim-plug.sh,
        Install vim-plug (https://github.com/junegunn/vim-plug)]
-    -
-      command: bash vim/install-ycm-dependencies.sh    # requires brew to install dependencies
-      stderr: true
-      description: Install dependencies to build YCM (https://github.com/ycm-core/YouCompleteMe)]
     - [bash tmux/install-tpm.sh,
        Install Tmux Plugin Manager(https://github.com/tmux-plugins/tpm)]
     -
