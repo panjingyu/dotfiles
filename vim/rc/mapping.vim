@@ -9,7 +9,7 @@ let mapleader = " "
 nmap <leader>w :w<cr>
 
 " Map fd to <Esc>
-inoremap fd <Esc>
+" inoremap fd <Esc> " Abandoned: mapped pressed-alone <C> to <Esc>
 
 " emacs-style cursor movement in insert/command-line mode
 noremap! <C-f> <Right>
@@ -53,3 +53,14 @@ map <Leader>T <Plug>(easymotion-T)
 " Pinpoint character(s) over windows
 map s <Plug>(easymotion-s)
 
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Search
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Disable highlight when <leader><cr> is pressed
+map <silent> <Esc><Esc> :nohlsearch<cr>
+
+" incsearch.vim configuration
+map /  <Plug>(incsearch-easymotion-/)
+map ?  <Plug>(incsearch-easymotin-?)
+map g/ <Plug>(incsearch-easymotion-stay)

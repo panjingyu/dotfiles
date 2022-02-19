@@ -52,100 +52,6 @@ endfunction
 
 noremap <silent><expr> z/ incsearch#go(<SID>config_easyfuzzymotion())
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Text, tab and indent related
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Use spaces instead of tabs
-set expandtab
-
-" Be smart when using tabs ;)
-"set smarttab
-
-" Set <tab> and <backspace> action in insert mode
-" number of columns of whitespace a tab keypress or a backspace keypress is worth.
-set softtabstop=4
-" number of columns of whitespace a \t is worth
-"set tabstop=4  " Use default = 8, Using a 'tabstop' value other than the default (8 spaces), will result in your file having a different appearance when using tools such as cat (type on Windows), which can't use a custom width tab character. On the other hand, using hard tabs for indentation, allows others to view your code with the amount of indentation they prefer.
-
-"set shiftwidth=4
-
-set autoindent  " does nothing more than copy the indentation from the previous line, when starting a new line.
-
-nmap <Leader>p :setlocal paste!<cr>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Search
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" When 'ignorecase' and 'smartcase' are both on, if a pattern contains an
-" uppercase letter, it is case sensitive, otherwise, it is not.
-set ignorecase
-set smartcase
-" Incrementally search while typing
-set incsearch
-" Highlight searches
-set hlsearch
-
-" Disable highlight when <leader><cr> is pressed
-map <silent> <Esc><Esc> :nohlsearch<cr>
-
-" incsearch.vim configuration
-map /  <Plug>(incsearch-easymotion-/)
-map ?  <Plug>(incsearch-easymotin-?)
-map g/ <Plug>(incsearch-easymotion-stay)
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Misc
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Set number
-set number
-set relativenumber
-
-" Set to auto read when a file is changed from the outside
-set autoread
-
-" Controls the minimal number of visible leading and trailing lines
-" surrounding the cursor.
-set scrolloff=7
-
-" Backspace should also perform on 'eol', 'start', 'indent'
-set backspace=eol,start,indent
-
-" Configure folding by syntax
-set foldmethod=syntax
-" no folds when a buffer is opened
-set foldlevelstart=99
-
-" Turn backup off, since most stuff is in SVN, git et.c anyway...
-set nobackup
-set nowb
-set noswapfile
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Theme configuration
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-syntax on
-
-" Enable tabline
-let g:airline#extensions#tabline#enabled = 1
-
-" onedark.vim override: Don't set a background color when running in a terminal;
-" just use the terminal's background color
-" `gui` is the hex color code used in GUI mode/nvim true-color mode
-" `cterm` is the color code used in 256-color mode
-" `cterm16` is the color code used in 16-color mode
-if (has("autocmd") && !has("gui_running"))
-    augroup colorset
-        autocmd!
-        let s:white = { "gui": "#ABB2BF", "cterm": "254", "cterm16" : "15" }
-        let s:comment_grey = { "gui": "#5C6370", "cterm": "7", "cterm16": "7" }
-        " `bg` will not be styled since there is no `bg` setting
-        autocmd ColorScheme * call onedark#set_highlight("Normal", { "fg": s:white })
-        autocmd ColorScheme * call onedark#set_highlight("Comment", { "fg": s:comment_grey })
-    augroup END
-endif
-
-colorscheme onedark
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Syntastic: syntax checker configuration
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -168,4 +74,6 @@ let g:vimrc = expand('<sfile>')
 let g:vimrc_root = fnamemodify(g:vimrc, ':h')
 let s:rc_base_dir = g:vimrc_root . '/.vim/rc/'
 
+call s:source_rc('options.vim')
 call s:source_rc('mapping.vim')
+call s:source_rc('colorscheme.vim')
