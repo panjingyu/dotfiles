@@ -30,9 +30,6 @@ autocmd VimEnter *
     \| endif
 
 
-" Keep cursor column during 'jk' line motion
-let g:EasyMotion_startofline = 0
-
 " incsearch.vim x fuzzy x vim-easymotion
 
 function! s:config_easyfuzzymotion(...) abort
