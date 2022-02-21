@@ -1,6 +1,6 @@
 # Jingyu's dotfiles
 
-My dotfiles for macOS/Ubuntu.
+My dotfiles for macOS/Linux.
 
 ## Rules
 
