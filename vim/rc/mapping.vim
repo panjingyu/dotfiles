@@ -57,8 +57,8 @@ map s <Plug>(easymotion-s)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Search
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Disable highlight when <leader><cr> is pressed
-map <silent> <Esc><Esc> :nohlsearch<cr>
+" Disable highlight when <leader><esc> is pressed
+map <silent> <Leader><Esc> :nohlsearch<cr>
 
 " incsearch.vim configuration
 map /  <Plug>(incsearch-easymotion-/)
