@@ -1,76 +1,17 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Vim-plug configuration
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Plugins will be downloaded under the specified directory.
-call plug#begin('~/.vim/plugged')
-
-" Declare the list of plugins.
-Plug 'ntpeters/vim-better-whitespace'   " Handle trailing white space
-Plug 'easymotion/vim-easymotion'
-Plug 'junegunn/vim-peekaboo'            " View regs in a natural way
-Plug 'preservim/nerdtree'
-Plug 'joshdick/onedark.vim'
-Plug 'sheerun/vim-polyglot'
-Plug 'psliwka/vim-smoothie'
-Plug 'tpope/vim-commentary'
-Plug 'vim-syntastic/syntastic'
-Plug 'vim-airline/vim-airline'
-Plug 'haya14busa/incsearch.vim'
-Plug 'haya14busa/incsearch-easymotion.vim'
-Plug 'haya14busa/incsearch-fuzzy.vim'
-
-" List ends here. Plugins become visible to Vim after this call.
-call plug#end()
-
-" Automatically install missing plugins on startup
-autocmd VimEnter *
-    \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-    \|     PlugInstall --sync | q
-    \| endif
-
-
-" incsearch.vim x fuzzy x vim-easymotion
-
-function! s:config_easyfuzzymotion(...) abort
-  return extend(copy({
-  \   'converters': [incsearch#config#fuzzy#converter()],
-  \   'modules': [incsearch#config#easymotion#module()],
-  \   'keymap': {"\<CR>": '<Over>(easymotion)'},
-  \   'is_expr': 0,
-  \   'is_stay': 1
-  \ }), get(a:, 1, {}))
-endfunction
-
-" @param {string} path 'relative to s:rc_base_dir(~/.vim/rc/)'
-function! s:source_rc(path) abort
-  execute 'source' fnameescape(s:rc_base_dir . a:path)
-endfunction
-
-noremap <silent><expr> z/ incsearch#go(<SID>config_easyfuzzymotion())
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Syntastic: syntax checker configuration
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Recommended in README
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-" Python
-let g:syntastic_python_checkers = ['pylint']
-
 " Load rc files
 let g:vimrc = expand('<sfile>')
 let g:vimrc_root = fnamemodify(g:vimrc, ':h')
-let s:rc_base_dir = g:vimrc_root . '/.vim/rc/'
+let s:rc_base_dir = g:vimrc_root . '/rc/'
 
+execute 'set runtimepath^=' . fnameescape(s:rc_base_dir)
+
+" @param {string} path 'relative to s:rc_base_dir(~/.vim/rc/)'
+function! s:source_rc(path) abort
+    execute 'source' fnameescape(s:rc_base_dir . a:path)
+endfunction
+
+call s:source_rc('autocmd.vim')
+call s:source_rc('plugins.vim')
 call s:source_rc('options.vim')
 call s:source_rc('mapping.vim')
 call s:source_rc('colorscheme.vim')

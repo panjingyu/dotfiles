@@ -60,3 +60,32 @@ set noswapfile
 
 " Keep cursor column during 'jk' line motion
 let g:EasyMotion_startofline = 0
+
+function! s:config_easyfuzzymotion(...) abort
+  return extend(copy({
+  \   'converters': [incsearch#config#fuzzy#converter()],
+  \   'modules': [incsearch#config#easymotion#module()],
+  \   'keymap': {"\<CR>": '<Over>(easymotion)'},
+  \   'is_expr': 0,
+  \   'is_stay': 1
+  \ }), get(a:, 1, {}))
+endfunction
+
+noremap <silent><expr> z/ incsearch#go(<SID>config_easyfuzzymotion())
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Syntastic: syntax checker configuration
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Recommended in README
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" Python
+let g:syntastic_python_checkers = ['pylint']

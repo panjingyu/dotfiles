@@ -29,7 +29,7 @@
         path: ssh/*
         glob: true
     ~/.tmux.conf: tmux/tmux.conf
-    ~/.vimrc: vim/vimrc
+    ~/.vim/vimrc: vim/vimrc
     ~/.vim/rc/:
         path: vim/rc/*
         glob: true
