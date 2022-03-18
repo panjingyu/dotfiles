@@ -20,6 +20,10 @@
     ~/.config/mpv/:
         path: mpv/*
         glob: true
+    ~/.config/nvim/init.vim: vim/vimrc
+    ~/.config/nvim/rc/:
+        path: vim/rc/*
+        glob: true
     ~/.gitconfig: git/config        # for backward compatibility
     ~/.p10k.zsh: zsh/p10k.zsh       # powerlevel10k
     ~/.pylintrc: python/pylintrc    # default user configuration for pylint
