@@ -27,6 +27,8 @@ Plug 'haya14busa/incsearch-easymotion.vim'
 Plug 'haya14busa/incsearch-fuzzy.vim'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-fugitive'
+Plug 'nvim-lua/plenary.nvim', Cond(has('nvim'))
+Plug 'lewis6991/gitsigns.nvim', Cond(has('nvim'))
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()

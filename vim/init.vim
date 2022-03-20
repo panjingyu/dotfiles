@@ -15,3 +15,5 @@ call s:source_rc('plugins.vim')
 call s:source_rc('options.vim')
 call s:source_rc('mapping.vim')
 call s:source_rc('colorscheme.vim')
+
+lua require('gitsigns').setup()

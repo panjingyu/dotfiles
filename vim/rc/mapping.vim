@@ -88,3 +88,6 @@ if exists('g:vscode')
     omap gc  <Plug>VSCodeCommentary
     nmap gcc <Plug>VSCodeCommentaryLine
 endif
+
+map <Leader>gs :Gitsigns stage_hunk<cr>
+map <Leader>gu :Gitsigns undo_stage_hunk<cr>
