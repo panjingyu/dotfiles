@@ -20,7 +20,7 @@
     ~/.config/mpv/:
         path: mpv/*
         glob: true
-    ~/.config/nvim/init.vim: vim/vimrc
+    ~/.config/nvim/init.vim: vim/init.vim
     ~/.config/nvim/rc/:
         path: vim/rc/*
         glob: true
@@ -33,7 +33,7 @@
         path: ssh/*
         glob: true
     ~/.tmux.conf: tmux/tmux.conf
-    ~/.vim/vimrc: vim/vimrc
+    ~/.vim/vimrc: vim/init.vim
     ~/.vim/rc/:
         path: vim/rc/*
         glob: true
