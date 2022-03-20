@@ -19,12 +19,14 @@ Plug 'preservim/nerdtree'
 Plug 'joshdick/onedark.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'psliwka/vim-smoothie'
-Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-commentary', Cond(!exists('g:vscode'))
 Plug 'vim-syntastic/syntastic'
 Plug 'vim-airline/vim-airline'
 Plug 'haya14busa/incsearch.vim'
 Plug 'haya14busa/incsearch-easymotion.vim'
 Plug 'haya14busa/incsearch-fuzzy.vim'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-fugitive'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()

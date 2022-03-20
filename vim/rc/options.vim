@@ -17,8 +17,6 @@ set softtabstop=4
 
 set autoindent  " does nothing more than copy the indentation from the previous line, when starting a new line.
 
-nmap <Leader>p :setlocal paste!<cr>
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Search
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -61,17 +59,10 @@ set noswapfile
 " Keep cursor column during 'jk' line motion
 let g:EasyMotion_startofline = 0
 
-function! s:config_easyfuzzymotion(...) abort
-  return extend(copy({
-  \   'converters': [incsearch#config#fuzzy#converter()],
-  \   'modules': [incsearch#config#easymotion#module()],
-  \   'keymap': {"\<CR>": '<Over>(easymotion)'},
-  \   'is_expr': 0,
-  \   'is_stay': 1
-  \ }), get(a:, 1, {}))
-endfunction
-
-noremap <silent><expr> z/ incsearch#go(<SID>config_easyfuzzymotion())
+" Enable system clipboard support in Neovim
+if has('nvim')
+    set clipboard=unnamedplus
+endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Syntastic: syntax checker configuration

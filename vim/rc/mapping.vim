@@ -7,11 +7,17 @@ let mapleader = " "
 
 " Fast saving
 nmap <leader>w :w<cr>
+nmap <leader>W :wa<cr>
+
+" In VSCode, disable <cr> movement to correct behavior of incsearch-easymotion
+noremap <cr> <Nop>
 
 " Map fd to <Esc>
 " inoremap fd <Esc> " Abandoned: mapped pressed-alone <C> to <Esc>
 
-" emacs-style cursor movement in insert/command-line mode
+nmap <Leader>p :setlocal paste!<cr>
+
+" emacs-style cursor movement in insert/command-line mode (with map!)
 noremap! <C-f> <Right>
 noremap! <C-b> <Left>
 noremap! <C-a> <Home>
@@ -53,7 +59,6 @@ map <Leader>T <Plug>(easymotion-T)
 " Pinpoint character(s) over windows
 map s <Plug>(easymotion-s)
 
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Search
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -64,3 +69,22 @@ map <silent> <Leader><Esc> :nohlsearch<cr>
 map /  <Plug>(incsearch-easymotion-/)
 map ?  <Plug>(incsearch-easymotin-?)
 map g/ <Plug>(incsearch-easymotion-stay)
+
+function! s:config_easyfuzzymotion(...) abort
+    return extend(copy({
+    \   'converters': [incsearch#config#fuzzy#converter()],
+    \   'modules': [incsearch#config#easymotion#module()],
+    \   'keymap': {"\<CR>": '<Over>(easymotion)'},
+    \   'is_expr': 0,
+    \   'is_stay': 1
+    \ }), get(a:, 1, {}))
+endfunction
+
+noremap <silent><expr> z/ incsearch#go(<SID>config_easyfuzzymotion())
+
+if exists('g:vscode')
+    xmap gc  <Plug>VSCodeCommentary
+    nmap gc  <Plug>VSCodeCommentary
+    omap gc  <Plug>VSCodeCommentary
+    nmap gcc <Plug>VSCodeCommentaryLine
+endif
