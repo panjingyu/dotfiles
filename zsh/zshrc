@@ -49,6 +49,10 @@ then
     export PATH=$HOME/.linuxbrew/bin:$PATH
 fi
 
+if [ -x "$(command -v nvim)" ]; then
+    alias vim=nvim
+fi
+
 export VISUAL=vim
 export EDITOR=vim
 
