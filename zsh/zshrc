@@ -44,7 +44,10 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 # Include non-root Homebrew for linux path
-if [ -d $HOME/.linuxbrew ]
+if [ -d /home/linuxbrew/.linuxbrew ]
+then
+    export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH
+elif [ -d $HOME/.linuxbrew ]
 then
     export PATH=$HOME/.linuxbrew/bin:$PATH
 fi
