@@ -34,9 +34,11 @@
 	verbose = true
 
 [alias]
+	d = diff
+	ds = diff --staged
 	st = status
 	co = checkout
-	cfg-global = !git config --file ~/.config/git/config.local  # without !git, file path are strictly handled as relative path
+	cg = !git config --file ~/.config/git/config.local  # without !git, file path are strictly handled as relative path
 	lg = log --all --graph --format=log-line --date=format:'%F %k:%M %z' --abbrev-commit
 	unstage = reset HEAD --
 
