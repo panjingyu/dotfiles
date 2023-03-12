@@ -84,3 +84,9 @@ if [ -x "$(command -v exa)" ]; then
 fi
 
 alias g='git'
+alias grp='grep --color -rEn'
+
+if [ $(uname) = "Linux" ]; then
+    alias pbcopy='xsel --clipboard --input'
+    alias pbpaste='xsel --clipboard --output'
+fi
